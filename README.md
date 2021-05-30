@@ -41,3 +41,5 @@ Entity - часть .NET
 
 ## Список использованной литературы:
 6-7 книг по Entity
+
+[Google drive](https://drive.google.com/drive/folders/1YDOZojJQ_nDLzgmc6DvlmDoKRzBCXq15?usp=sharing)
