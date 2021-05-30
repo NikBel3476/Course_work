@@ -12,6 +12,6 @@ namespace CarShopDB
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Login { get; set; }
-        public string password { get; set; }
+        public string Password { get; set; }
     }
 }
