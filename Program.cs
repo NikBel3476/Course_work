@@ -11,9 +11,7 @@ namespace CarDB
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Car list");
             using Context DbContext = new();
-
             
             if (!(DbContext.GetService<IDatabaseCreator>() as RelationalDatabaseCreator).Exists())
             {
@@ -22,11 +20,19 @@ namespace CarDB
 
                 // add the data
                 DbInitializer.Initialize(DbContext);
-            } 
+                Console.WriteLine("База данных была создана");
+            } else
+            {
+                Console.WriteLine("База данных уже существует");
+            }
 
+            Console.WriteLine("Список автомобилей");
             if (DbContext.Cars.Any())
             {
-                var cars = DbContext.Cars.Include(c => c.CarBrand).Include(c => c.CarModel).Include(c => c.Color).ToList();
+                var cars = DbContext.Cars
+                    .Include(c => c.CarBrand)
+                    .Include(c => c.CarModel)
+                    .Include(c => c.Color).ToList();
                 foreach (Car c in cars)
                 {
                     Console.WriteLine(c.ToString());
@@ -34,7 +40,7 @@ namespace CarDB
             }
             else
             {
-                Console.WriteLine("there is no cars in database");
+                Console.WriteLine("Нет автомобилей в базе данных");
             }
 
             Console.Read();
